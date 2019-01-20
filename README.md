@@ -1,2 +1,4 @@
 # rust-react-typescript-demo
-Demo repo for my Rust, React, and Typescript project
+
+This repository contains demo code for my programming 101 with Rust, React, and TypeScript.
+
