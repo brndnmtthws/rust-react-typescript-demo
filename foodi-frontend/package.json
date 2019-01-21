@@ -1,0 +1,25 @@
+{
+  "name": "foodi-frontend",
+  "version": "1.0.0",
+  "license": "Unlicense",
+  "devDependencies": {
+    "@types/node": "^10.12.18",
+    "@types/react": "^16.7.20",
+    "@types/react-dom": "^16.0.11",
+    "babel-core": "^6.26.3",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "jshint": "^2.9.7",
+    "parcel-bundler": "^1.11.0",
+    "tslint": "^5.12.1",
+    "typescript": "^3.2.4"
+  },
+  "dependencies": {
+    "mobx": "^5.9.0",
+    "mobx-react": "^5.4.3",
+    "react": "^15.0.0 || ^16.0.0",
+    "react-dom": "^15.0.0 || ^16.0.0",
+    "react-hot-loader": "next"
+  }
+}
