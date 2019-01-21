@@ -1,6 +1,5 @@
 use crate::schema::meals;
 use chrono::NaiveDateTime;
-use diesel::prelude::*;
 
 #[derive(Queryable, Serialize)]
 pub struct Meal {
