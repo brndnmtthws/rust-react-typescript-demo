@@ -13,13 +13,16 @@
     "jshint": "^2.9.7",
     "parcel-bundler": "^1.11.0",
     "tslint": "^5.12.1",
-    "typescript": "^3.2.4"
+    "typescript": "^3.3.0-dev.20190119"
   },
   "dependencies": {
     "mobx": "^5.9.0",
     "mobx-react": "^5.4.3",
     "react": "^15.0.0 || ^16.0.0",
     "react-dom": "^15.0.0 || ^16.0.0",
-    "react-hot-loader": "next"
+    "react-hot-loader": "next",
+    "serializr": "^1.3.0",
+    "tslib": "^1.9.3",
+    "typed-rest-client": "^1.0.11"
   }
 }

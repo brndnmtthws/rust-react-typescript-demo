@@ -10,6 +10,8 @@ extern crate diesel;
 extern crate serde_derive;
 use rocket::response::content;
 use rocket_contrib::json::{Json, JsonValue};
+use rocket_cors;
+use rocket_cors::{AllowedHeaders, AllowedOrigins, Error};
 
 mod models;
 mod schema;
@@ -84,10 +86,20 @@ fn not_found() -> JsonValue {
     })
 }
 
-fn main() {
+fn main() -> Result<(), Error> {
+    let cors = rocket_cors::Cors {
+        allowed_origins: AllowedOrigins::all(),
+        allowed_headers: AllowedHeaders::all(),
+        allow_credentials: true,
+        ..Default::default()
+    };
+
     rocket::ignite()
         .attach(DbConn::fairing())
+        .attach(cors)
         .register(catchers![not_found])
         .mount("/v1", routes![list, add, get])
         .launch();
+
+    Ok(())
 }
