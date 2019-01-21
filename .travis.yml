@@ -1,0 +1,15 @@
+language: rust
+dist: xenial
+rust:
+  - stable
+  - beta
+  - nightly
+matrix:
+  allow_failures:
+    - rust: beta
+    - rust: stable
+  fast_finish: true
+cache: cargo
+script:
+  - cd foodi-backend
+  - cargo test --verbose --all
