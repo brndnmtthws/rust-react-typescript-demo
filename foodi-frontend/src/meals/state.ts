@@ -1,9 +1,10 @@
-import { observable } from "mobx";
+import { observable, IObservableArray } from "mobx";
 import { Meal } from "./model";
 
 export class AppState {
   constructor() {
-    this.meals = [];
+    this.meals = observable([]);
   }
-  @observable public meals: Array<Meal>;
+
+  @observable public meals: IObservableArray<Meal>;
 }

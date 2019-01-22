@@ -25,10 +25,15 @@ export class MealController {
     response.then(
       res => {
         try {
-          const mealResult = deserialize(Meal, res.result);
-          mealResult.forEach(meal => {
-            this.appState.meals.push(meal);
-          });
+          if (res.result && res.result instanceof Array) {
+            res.result.forEach(item => {
+              deserialize(Meal, item, (error, meal) => {
+                if (error === null) {
+                  this.appState.meals.push(meal);
+                }
+              });
+            });
+          }
         } catch (err) {
           console.log(err);
         }
