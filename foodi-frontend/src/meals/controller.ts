@@ -2,6 +2,7 @@ import * as restm from "typed-rest-client/RestClient";
 import { deserialize } from "serializr";
 import { AppState } from "./state";
 import { Meal } from "./model";
+import { action } from "mobx";
 
 export class MealController {
   appState: AppState;
@@ -12,15 +13,22 @@ export class MealController {
     this.loadAllMeals();
   }
 
+  public getMeals() {
+    return this.appState.meals;
+  }
+
+  @action
   loadAllMeals() {
-    const client = "rest";
+    this.appState.meals.clear();
     const restc = new restm.RestClient("vsts-node-api");
     const response = restc.get(this.baseUrl + "/meals");
     response.then(
       res => {
         try {
-          const meal = deserialize(Meal, res.result);
-          console.log(meal);
+          const mealResult = deserialize(Meal, res.result);
+          mealResult.forEach(meal => {
+            this.appState.meals.push(meal);
+          });
         } catch (err) {
           console.log(err);
         }
