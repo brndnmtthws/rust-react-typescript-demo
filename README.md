@@ -2,7 +2,7 @@
 
 # rust-react-typescript-demo
 
-This repository contains demo code for my YouTube programming learning series about Rust, React, and TypeScript.
+This repository contains demo code for my YouTube programming learning series about [Rust](https://www.rust-lang.org/), [React](https://reactjs.org/), and [TypeScript](https://www.typescriptlang.org/).
 
 You can find the videos on YouTube below:
 
@@ -55,7 +55,7 @@ $ cargo run
 ## Running the Frontend Server
 
 To build and run the frontend assets and server, you will need a recent
-version of NodeJS and yarn installed. Using homebrew on macOS, you can
+version of [Node.js]() and [Yarn](https://yarnpkg.com/en/) installed. Using homebrew on macOS, you can
 install it with homebrew:
 
 ```ShellSession
@@ -65,7 +65,7 @@ $ brew install yarn
 
 ### Install package dependencies
 
-Install the frontend package dependencies using yarn:
+Install the frontend package dependencies using Yarn:
 
 ```ShellSession
 $ cd foodi-frontend
