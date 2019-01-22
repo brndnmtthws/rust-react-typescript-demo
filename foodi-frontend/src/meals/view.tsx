@@ -1,10 +1,8 @@
 import * as React from "react";
-import * as ReactDOM from "react-dom";
-import { observable } from "mobx";
 import { observer } from "mobx-react";
 import { AppState } from "./state";
 import { MealController } from "./controller";
-import { Meal } from "./model";
+import "./meals.css";
 
 @observer
 export class MealView extends React.Component<{ appState: AppState }, {}> {
@@ -15,8 +13,22 @@ export class MealView extends React.Component<{ appState: AppState }, {}> {
   }
   render() {
     const meals = this.props.appState.meals;
-    let idList = meals.map(meal => <li key={String(meal.id)}>{meal.id}</li>);
-    console.log(idList);
-    return <ul>{idList}</ul>;
+    let idList = meals.map(meal => (
+      <tr key={String(meal.id)}>
+        <td>{meal.id}</td>
+        <td>{meal.name}</td>
+        <td>{meal.time}</td>
+      </tr>
+    ));
+    return (
+      <table>
+        <thead>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Time</th>
+        </thead>
+        <tbody>{idList}</tbody>
+      </table>
+    );
   }
 }

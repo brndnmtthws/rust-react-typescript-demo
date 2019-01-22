@@ -1,15 +1,36 @@
-language: rust
 dist: xenial
-rust:
-  - stable
-  - beta
-  - nightly
 matrix:
-  allow_failures:
-    - rust: beta
-    - rust: stable
   fast_finish: true
-cache: cargo
-script:
-  - cd foodi-backend
-  - cargo test --verbose --all
+  allow_failures:
+    - rust: stable
+    - rust: beta
+  include:
+    - language: rust
+      rust: nightly
+      cache: cargo
+      script:
+        - cd foodi-backend
+        - cargo test --verbose --all
+    - language: rust
+      rust: beta
+      cache: cargo
+      script:
+        - cd foodi-backend
+        - cargo test --verbose --all
+    - language: rust
+      rust: stable
+      cache: cargo
+      script:
+        - cd foodi-backend
+        - cargo test --verbose --all
+    - language: node_js
+      node_js: node
+      cache:
+        yarn: true
+        directories:
+          - foodi-frontend/node_modules
+      script:
+        - cd foodi-frontend
+        - yarn global add parcel-bundler
+        - yarn install
+        - parcel build index.html
