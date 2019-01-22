@@ -11,6 +11,8 @@ You can find the videos on YouTube below:
 - [📽 Part 3](https://youtu.be/GinLXQVqJM4)
 - [📽 Part 4](https://youtu.be/daHmhL1UCIs)
 
+In the series, we're building **foodi**, a web-based meal logger/tracking tool.
+
 ## Compiling the Rust Backend Server
 
 To build the Rust backend, you will need to install the Rust nightly build
