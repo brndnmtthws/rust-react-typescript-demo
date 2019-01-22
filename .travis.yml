@@ -1,4 +1,7 @@
 dist: xenial
+branches:
+  only:
+    - master
 matrix:
   fast_finish: true
   allow_failures:
@@ -29,8 +32,9 @@ matrix:
         yarn: true
         directories:
           - foodi-frontend/node_modules
-      script:
+      before_script:
         - cd foodi-frontend
         - yarn global add parcel-bundler
         - yarn install
-        - parcel build index.html
+      script:
+        - yarn build

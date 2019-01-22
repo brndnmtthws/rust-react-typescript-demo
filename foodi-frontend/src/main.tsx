@@ -4,7 +4,7 @@ import { setConfig } from "react-hot-loader";
 setConfig({ logLevel: "debug" });
 
 function renderApp() {
-  const App = require("./App").default;
+  const App = require("./app").default;
   render(<App />, document.getElementById("root"));
 }
 

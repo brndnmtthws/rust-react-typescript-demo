@@ -9,6 +9,7 @@ You can find the videos on YouTube below:
 - [📽 Part 1](https://youtu.be/-DNF8qkJ0ws)
 - [📽 Part 2](https://youtu.be/aRpUbu2wTiA)
 - [📽 Part 3](https://youtu.be/GinLXQVqJM4)
+- [📽 Part 4](https://youtu.be/daHmhL1UCIs)
 
 ## Compiling the Rust Backend Server
 
