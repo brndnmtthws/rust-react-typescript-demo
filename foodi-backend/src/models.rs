@@ -8,7 +8,7 @@ pub struct Meal {
     pub time: NaiveDateTime,
 }
 
-#[derive(Insertable, Deserialize)]
+#[derive(AsChangeset, Insertable, Deserialize)]
 #[table_name = "meals"]
 pub struct NewMeal {
     pub name: String,
