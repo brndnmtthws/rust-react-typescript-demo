@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.org/brndnmtthws/rust-react-typescript-demo.svg?branch=master)](https://travis-ci.org/brndnmtthws/rust-react-typescript-demo)
+[![Build Status](https://travis-ci.org/brndnmtthws/rust-react-typescript-demo.svg?branch=master)](https://travis-ci.org/brndnmtthws/rust-react-typescript-demo) [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=brndnmtthws/rust-react-typescript-demo)](https://dependabot.com)
+
 
 # rust-react-typescript-demo
 
