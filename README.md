@@ -41,7 +41,7 @@ To create the initial database schema, run the migration scripts using
 `diesel`:
 
 ```ShellSession
-$ cargo install diesel_cli
+$ cargo install diesel_cli --no-default-features --features sqlite
 ...
 $ diesel migration run --database-url database.sqlite
 ...
