@@ -6,9 +6,14 @@ import { action } from "mobx";
 
 export class MealController {
   appState: AppState;
-  baseUrl: String = "http://localhost:8000/v1";
+  baseUrl: String;
 
   constructor(appState: AppState) {
+    if (process.env.NODE_ENV === "development") {
+      this.baseUrl = "http://localhost:8000/v1";
+    } else {
+      this.baseUrl = window.location.origin + "/v1";
+    }
     this.appState = appState;
     this.loadAllMeals();
   }
@@ -35,21 +40,24 @@ export class MealController {
             });
           }
         } catch (err) {
+          alert(err);
           console.log(err);
         }
       },
       reason => {
+        alert(reason);
         console.log(reason);
       }
     );
 
     response.catch(reason => {
+      alert(reason);
       console.log(reason);
     });
   }
 
   @action
-  addMeal(meal: NewMeal) {
+  addMeal(meal: NewMeal, callback: () => void) {
     const restc = new restm.RestClient("vsts-node-api");
     const response = restc.create(this.baseUrl + "/meals", meal);
     response.then(
@@ -59,10 +67,15 @@ export class MealController {
             deserialize(Meal, res.result, (error, meal) => {
               if (error === null) {
                 this.appState.meals.push(meal);
+                callback();
+              } else {
+                alert(error);
+                console.log(error);
               }
             });
           }
         } catch (err) {
+          alert(err);
           console.log(err);
         }
       },
@@ -72,6 +85,7 @@ export class MealController {
     );
 
     response.catch(reason => {
+      alert(reason);
       console.log(reason);
     });
   }

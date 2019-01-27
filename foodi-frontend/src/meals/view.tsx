@@ -7,6 +7,24 @@ import "tachyons";
 import "./meals.css";
 import { Meal, NewMeal } from "./model";
 
+class TableRow extends React.Component<{}, {}> {
+  render() {
+    return <tr className="striped--near-white">{this.props.children}</tr>;
+  }
+}
+
+class TableHeader extends React.Component<{}, {}> {
+  render() {
+    return <th className="pv2 ph3 tl f6 fw6 ttu">{this.props.children}</th>;
+  }
+}
+
+class TableData extends React.Component<{}, {}> {
+  render() {
+    return <td className="pv2 ph3">{this.props.children}</td>;
+  }
+}
+
 @observer
 export class MealView extends React.Component<{ appState: AppState }, {}> {
   mealController: MealController;
@@ -18,6 +36,7 @@ export class MealView extends React.Component<{ appState: AppState }, {}> {
     this.mealController = new MealController(this.props.appState);
   }
 
+  @action
   addNewMeal(event: React.MouseEvent) {
     console.log("Add new meal button clicked");
     this.showNewMealForm = true;
@@ -30,21 +49,27 @@ export class MealView extends React.Component<{ appState: AppState }, {}> {
     return new Date(Math.floor(now.getTime() / coeff) * coeff).toISOString();
   }
 
+  @action
+  hideForm() {
+    console.log("hiding form");
+    this.showNewMealForm = false;
+  }
+
   formSubmit(event: React.MouseEvent) {
     console.log("form submitted");
     console.log(event);
     console.log(this.mealForm);
-    this.mealController.addMeal(this.mealForm);
+    this.mealController.addMeal(this.mealForm, () => this.hideForm());
   }
 
   render() {
     const meals = this.props.appState.meals;
     let idList = meals.map(meal => (
-      <tr className="striped--near-white " key={String(meal.id)}>
-        <td className="pv2 ph3">{meal.id}</td>
-        <td className="pv2 ph3">{meal.name}</td>
-        <td className="pv2 ph3">{meal.time}</td>
-      </tr>
+      <TableRow key={String(meal.id)}>
+        <TableData>{meal.id}</TableData>
+        <TableData>{meal.name}</TableData>
+        <TableData>{meal.time}</TableData>
+      </TableRow>
     ));
     let mealForm = (
       <div className="contain fl pa2 w-100">
@@ -99,11 +124,11 @@ export class MealView extends React.Component<{ appState: AppState }, {}> {
         <div className="pa3">
           <table className="collapse pv2 ph3 mt4 fl pa2 w-100">
             <tbody>
-              <tr className="striped--near-white ">
-                <th className="pv2 ph3 tl f6 fw6 ttu">ID</th>
-                <th className="pv2 ph3 tl f6 fw6 ttu">Name</th>
-                <th className="pv2 ph3 tl f6 fw6 ttu">Time</th>
-              </tr>
+              <TableRow>
+                <TableHeader>ID</TableHeader>
+                <TableHeader>Name</TableHeader>
+                <TableHeader>Time</TableHeader>
+              </TableRow>
               {idList}
             </tbody>
           </table>
