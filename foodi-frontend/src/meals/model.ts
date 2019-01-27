@@ -10,3 +10,8 @@ decorate(Meal, {
   name: observable,
   time: observable
 });
+
+export class NewMeal {
+  @serializable name: String = "";
+  @serializable time: Date = new Date();
+}

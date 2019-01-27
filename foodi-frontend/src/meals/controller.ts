@@ -1,7 +1,7 @@
 import * as restm from "typed-rest-client/RestClient";
 import { deserialize } from "serializr";
 import { AppState } from "./state";
-import { Meal } from "./model";
+import { Meal, NewMeal } from "./model";
 import { action } from "mobx";
 
 export class MealController {
@@ -32,6 +32,34 @@ export class MealController {
                   this.appState.meals.push(meal);
                 }
               });
+            });
+          }
+        } catch (err) {
+          console.log(err);
+        }
+      },
+      reason => {
+        console.log(reason);
+      }
+    );
+
+    response.catch(reason => {
+      console.log(reason);
+    });
+  }
+
+  @action
+  addMeal(meal: NewMeal) {
+    const restc = new restm.RestClient("vsts-node-api");
+    const response = restc.create(this.baseUrl + "/meals", meal);
+    response.then(
+      res => {
+        try {
+          if (res.result && res.result instanceof Object) {
+            deserialize(Meal, res.result, (error, meal) => {
+              if (error === null) {
+                this.appState.meals.push(meal);
+              }
             });
           }
         } catch (err) {
