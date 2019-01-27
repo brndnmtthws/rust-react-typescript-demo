@@ -12,6 +12,7 @@ You can find the videos on YouTube below:
 - [📽 Part 3](https://youtu.be/GinLXQVqJM4)
 - [📽 Part 4](https://youtu.be/daHmhL1UCIs)
 - [📽 Part 5](https://youtu.be/xWf3VyThZJY)
+- [📽 Part 6](https://youtu.be/KhuZb5mF7C0)
 
 In the series, we're building **foodi**, a web-based meal logger/tracking tool.
 
