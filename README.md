@@ -86,3 +86,21 @@ Use `parcel` to run the frontend development server:
 $ parcel index.html
 ...
 ```
+
+## Build and run the Docker image
+
+Assuming you have [Docker](https://docs.docker.com/install/) installed, run the build command from the top level of the repo:
+
+```ShellSession
+$ docker build . -t foodi:latest
+...
+```
+
+Once the build completes, run the container, and map port 80 from inside the container to outside the container on port 8080 (on your host machine):
+
+```ShellSession
+$ docker run -p 8080:80 foodi:latest
+...
+```
+
+🎉 Now you can open `http://localhost:8080/` in your browsers and test the app.
