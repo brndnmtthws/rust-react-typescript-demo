@@ -3,7 +3,17 @@
 
 # rust-react-typescript-demo
 
-This repository contains demo code for my YouTube programming learning series about [Rust](https://www.rust-lang.org/), [React](https://reactjs.org/), and [TypeScript](https://www.typescriptlang.org/). For this project, we're creating **foodi**, a meal logging tool.
+This repository contains demo code for my YouTube programming learning series about [Rust](https://www.rust-lang.org/), [React](https://reactjs.org/), [TypeScript](https://www.typescriptlang.org/), [Docker](https://docs.docker.com/install/), [Terraform](https://www.terraform.io/) and [Kubernetes](https://kubernetes.io/). For this project, we're creating **foodi**, a meal logging tool.
+
+**Please note, the project is not yet finished.**
+
+When complete, this repo will have the following features:
+
+* Rust & Diesel based backend
+* React, Mobx, and TypeScript based frontend
+* Docker image with frontend & backend all-in-one
+* Terraform for managing a [GKE](https://cloud.google.com/kubernetes-engine/) cluster on [GCP](https://cloud.google.com/)
+* Kubernetes manifest for running on GKE
 
 You can find the videos on YouTube below:
 
@@ -89,7 +99,7 @@ $ parcel index.html
 
 ## Build and run the Docker image
 
-Assuming you have [Docker](https://docs.docker.com/install/) installed, run the build command from the top level of the repo:
+Assuming you have Docker installed, run the build command from the top level of the repo:
 
 ```ShellSession
 $ docker build . -t foodi:latest
