@@ -3,7 +3,7 @@
 
 # rust-react-typescript-demo
 
-This repository contains demo code for my YouTube programming learning series about [Rust](https://www.rust-lang.org/), [React](https://reactjs.org/), and [TypeScript](https://www.typescriptlang.org/).
+This repository contains demo code for my YouTube programming learning series about [Rust](https://www.rust-lang.org/), [React](https://reactjs.org/), and [TypeScript](https://www.typescriptlang.org/). For this project, we're creating **foodi**, a meal logging tool.
 
 You can find the videos on YouTube below:
 
