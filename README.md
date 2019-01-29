@@ -61,7 +61,7 @@ $ diesel migration run --database-url database.sqlite
 ...
 ```
 
-### Bulding the Backend Server
+### Building the Backend Server
 
 Lastly, you can now run the backend server:
 
