@@ -115,4 +115,4 @@ $ docker run -p 8080:80 foodi:latest
 ...
 ```
 
-🎉 Now you can open `http://localhost:8080/` in your browsers and test the app.
+🎉 Now you can open `http://localhost:8080/` in your browser and test the app.
