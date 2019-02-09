@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: foodi
-          image: brndnmtthws/foodi:latest
+          image: brndnmtthws/rust-react-typescript-demo:latest
           ports:
             - containerPort: 80
           livenessProbe:
