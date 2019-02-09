@@ -1,0 +1,51 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: foodi
+  labels:
+    app: foodi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: foodi
+  template:
+    metadata:
+      labels:
+        app: foodi
+    spec:
+      containers:
+        - name: foodi
+          image: brndnmtthws/foodi:latest
+          ports:
+            - containerPort: 80
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 3
+            periodSeconds: 3
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: foodi
+spec:
+  selector:
+    app: foodi
+  type: NodePort
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: foodi
+spec:
+  backend:
+    serviceName: foodi
+    servicePort: 80
