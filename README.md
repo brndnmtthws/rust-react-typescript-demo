@@ -1,21 +1,21 @@
 [![Build Status](https://travis-ci.org/brndnmtthws/rust-react-typescript-demo.svg?branch=master)](https://travis-ci.org/brndnmtthws/rust-react-typescript-demo) [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=brndnmtthws/rust-react-typescript-demo)](https://dependabot.com)
 
-
-# rust-react-typescript-demo [WIP]
+# rust-react-typescript-demo
 
 This repository contains demo code for my YouTube programming learning series about [Rust](https://www.rust-lang.org/), [React](https://reactjs.org/), [TypeScript](https://www.typescriptlang.org/), [Docker](https://docs.docker.com/install/), [Terraform](https://www.terraform.io/) and [Kubernetes](https://kubernetes.io/). For this project, we're creating **foodi**, a meal logging tool.
 
-**Please note, the project is not yet finished.** If you'd like to follow along, ask questions, or participate:
-* [📹 Subscribe to my YouTube channel](https://www.youtube.com/c/BrendenMatthews/live), or
-* [🎮 follow me on Twitch](https://www.twitch.tv/brndnmtthws)
+If you'd like to learn more, check out my other projects:
+
+- [📹 Subscribe to my YouTube channel](https://www.youtube.com/c/BrendenMatthews/live), or
+- [🎮 follow me on Twitch](https://www.twitch.tv/brndnmtthws)
 
 When complete, this repo will have the following features:
 
-* Rust & Diesel based backend
-* React, Mobx, and TypeScript based frontend
-* Docker image with frontend & backend all-in-one
-* Terraform for managing a [GKE](https://cloud.google.com/kubernetes-engine/) cluster on [GCP](https://cloud.google.com/)
-* Kubernetes manifest for running on GKE
+- Rust & Diesel based backend
+- React, Mobx, and TypeScript based frontend
+- Docker image with frontend & backend all-in-one
+- Terraform for managing a [GKE](https://cloud.google.com/kubernetes-engine/) cluster on [GCP](https://cloud.google.com/)
+- Kubernetes manifest for running on GKE
 
 You can find the videos on YouTube below:
 
