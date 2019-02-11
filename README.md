@@ -9,7 +9,7 @@ If you'd like to learn more, check out my other projects:
 - [📹 Subscribe to my YouTube channel](https://www.youtube.com/c/BrendenMatthews/live), or
 - [🎮 follow me on Twitch](https://www.twitch.tv/brndnmtthws)
 
-When complete, this repo will have the following features:
+This repo has the following features:
 
 - Rust & Diesel based backend
 - React, Mobx, and TypeScript based frontend
