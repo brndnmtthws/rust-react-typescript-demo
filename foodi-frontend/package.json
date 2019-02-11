@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "license": "Unlicense",
   "devDependencies": {
-    "@types/node": "^10.12.23",
+    "@types/node": "^10.12.24",
     "@types/react": "^16.8.2",
     "@types/react-dom": "^16.8.0",
     "babel-core": "^6.26.3",
