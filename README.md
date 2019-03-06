@@ -4,9 +4,10 @@
 
 This repository contains demo code for my YouTube programming learning series about [Rust](https://www.rust-lang.org/), [React](https://reactjs.org/), [TypeScript](https://www.typescriptlang.org/), [Docker](https://docs.docker.com/install/), [Terraform](https://www.terraform.io/) and [Kubernetes](https://kubernetes.io/). For this project, we're creating **foodi**, a meal logging tool.
 
-This project serves as an example, and can be used as an boilerplate for starting
-your own projects. You can also watch the videos to learn more about how it was
-built (mostly trial and error, like a lot of things in life 😀).
+This project is intended to serve as an example, and can be used as boilerplate
+for starting your own project. You can also watch the videos to learn more
+about how it was built (mostly trial and error, like a lot of things in life
+😀).
 
 If you'd like to learn more, check out my other projects:
 
