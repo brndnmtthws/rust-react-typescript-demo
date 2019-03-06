@@ -16,11 +16,12 @@ If you'd like to learn more, check out my other projects:
 
 This repo has the following features:
 
-- Rust & Diesel based backend
-- React, Mobx, and TypeScript based frontend
-- Docker image with frontend & backend all-in-one
-- Terraform for managing a [GKE](https://cloud.google.com/kubernetes-engine/) cluster on [GCP](https://cloud.google.com/)
-- Kubernetes manifest for running on GKE
+- [Rust](https://www.rust-lang.org/), [Rocket](https://rocket.rs/), & [Diesel](http://diesel.rs/) based backend
+- [React](https://reactjs.org/), [Mobx](https://mobx.js.org/), and [TypeScript](https://www.typescriptlang.org/) based frontend
+- [Parcel](https://parceljs.org/) for frontend packaging
+- [Docker](https://docs.docker.com/install/) image with frontend & backend all-in-one
+- [Terraform](https://www.terraform.io/) for managing a [GKE](https://cloud.google.com/kubernetes-engine/) cluster on [GCP](https://cloud.google.com/)
+- [Kubernetes](https://kubernetes.io/) manifest for running on GKE
 
 You can find the videos on YouTube below:
 
