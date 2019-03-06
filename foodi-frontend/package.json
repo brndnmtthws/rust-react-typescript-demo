@@ -21,7 +21,7 @@
     "mobx": "^5.9.0",
     "mobx-react": "^5.4.3",
     "react": "^16.8.4",
-    "react-dom": "^16.8.3",
+    "react-dom": "^16.8.4",
     "react-hot-loader": "next",
     "serializr": "^1.5.0",
     "tslib": "^1.9.3",
