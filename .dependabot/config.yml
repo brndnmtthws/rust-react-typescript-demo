@@ -1,0 +1,32 @@
+version: 1
+update_configs:
+  - package_manager: "javascript"
+    directory: "/foodi-frontend"
+    update_schedule: "live"
+
+    default_reviewers:
+        - "brndnmtthws"
+
+    automerged_updates:
+      - match:
+          dependency_type: "development"
+          update_type: "all"
+      - match:
+          dependency_type: "production"
+          update_type: "security:patch"
+
+  - package_manager: "rust:cargo"
+    directory: "/foodi-backend"
+    update_schedule: "live"
+
+    default_reviewers:
+        - "brndnmtthws"
+
+    automerged_updates:
+      - match:
+          dependency_type: "development"
+          update_type: "all"
+      - match:
+          dependency_type: "production"
+          update_type: "security:patch"
+
