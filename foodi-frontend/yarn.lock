@@ -5285,10 +5285,10 @@ serialize-to-js@^1.1.1:
     js-beautify "^1.8.9"
     safer-eval "^1.3.0"
 
-serializr@^1.5.0:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/serializr/-/serializr-1.5.0.tgz#e6b9edf068aae2eab5b8e9d1529faa92f7359d39"
-  integrity sha512-2+/jUjvYsUzFWuI2x2em9QGjSpBgU0pkOB7zQTi6CJm4KOlOS0RAeJBaRQg/pOj4/CeoOv8YUNOngSE8EKJWcg==
+serializr@^1.5.1:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/serializr/-/serializr-1.5.1.tgz#8967c8af868f05d8ba6a651a9866c8797533e49b"
+  integrity sha512-ygrOOOB+eaYYiFCLSS1kzu2KtmhP1ZzLFsv+GPWIdhtuDMBTN3H0ldnswPLqIExrEyQWQhiExFlC9Gu8pCT9Uw==
 
 serve-static@^1.12.4:
   version "1.13.2"
