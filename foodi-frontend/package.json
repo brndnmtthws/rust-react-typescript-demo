@@ -10,7 +10,7 @@
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
-    "jshint": "^2.10.1",
+    "jshint": "^2.10.2",
     "parcel-bundler": "^1.12.1",
     "tachyons": "^4.11.1",
     "tslint": "^5.14.0",
