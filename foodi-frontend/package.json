@@ -25,7 +25,7 @@
     "react-hot-loader": "next",
     "serializr": "^1.5.1",
     "tslib": "^1.9.3",
-    "typed-rest-client": "^1.2.0"
+    "typed-rest-client": "^1.4.0"
   },
   "scripts": {
     "dev": "parcel index.html",
