@@ -147,12 +147,12 @@ fn unprocessable_entity() -> JsonValue {
 }
 
 fn main() -> Result<(), Error> {
-    let cors = rocket_cors::Cors {
+    let cors = rocket_cors::Cors::from_options(rocket_cors::CorsOptions{
         allowed_origins: AllowedOrigins::all(),
         allowed_headers: AllowedHeaders::all(),
         allow_credentials: true,
         ..Default::default()
-    };
+    }).unwrap();
 
     rocket::ignite()
         .attach(DbConn::fairing())
