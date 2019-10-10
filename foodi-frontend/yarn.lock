@@ -5286,10 +5286,10 @@ serialize-to-js@^3.0.0:
   resolved "https://registry.yarnpkg.com/serialize-to-js/-/serialize-to-js-3.0.0.tgz#1fd8736744819a4df29dc85e9d04a44a4984edc3"
   integrity sha512-WdGgi0jGnWCQXph2p3vkxceDnTfvfyXfYxherQMRcZjSaJzMQdMBAW6i0nojsBKIZ3fFOztZKKVbbm05VbIdRA==
 
-serializr@^1.5.2:
-  version "1.5.2"
-  resolved "https://registry.yarnpkg.com/serializr/-/serializr-1.5.2.tgz#f9673a986a1a53f33ad297174d38e3b113b9d430"
-  integrity sha512-Iidr7I5Hz/XTSfIDRMfe2nOKuVx1h/R6YZY+DCqrJfAnCBuO/itLRlhzeYh2B8uUDqcNpKUhLY0fAK2ibeGk6w==
+serializr@^1.5.3:
+  version "1.5.3"
+  resolved "https://registry.yarnpkg.com/serializr/-/serializr-1.5.3.tgz#dfed546b1458b57511df5b7d510d944c16da839c"
+  integrity sha512-eTtMMIbkpJVMFCM5NAkwLcO9okiK419Ij1Rh+pjNu26mfN/cLRARwqSKbYxBy5gBFoB2tQU7Bma4KZ1eqHjLaQ==
 
 serve-static@^1.12.4:
   version "1.14.1"
