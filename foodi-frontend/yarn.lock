@@ -3944,10 +3944,10 @@ mobx-react@^6.1.4:
   dependencies:
     mobx-react-lite "^1.4.2"
 
-mobx@^5.14.0:
-  version "5.14.0"
-  resolved "https://registry.yarnpkg.com/mobx/-/mobx-5.14.0.tgz#357c1023aca2851df357fa0cb9a6eaaab3a57793"
-  integrity sha512-GhDSZV9rGlCeVBpFPVYaYSn7UjgkD3158Njailp4IJhKqbT5iiEtiRyr76b7gPj3wpUSl+NHREQqBXzc1I8jpQ==
+mobx@^5.14.1:
+  version "5.14.1"
+  resolved "https://registry.yarnpkg.com/mobx/-/mobx-5.14.1.tgz#3a47f25091f40d7f8d47e64e3d2a10473338f24f"
+  integrity sha512-N0A5ix8mgOKRcYa1E+jKoBj/UEeEpWSsOIqnKre9V1Q7DltJUj9CvhSQKPuI4Tg/yiVHTutiEuPy6L+HCHejsw==
 
 ms@2.0.0:
   version "2.0.0"
