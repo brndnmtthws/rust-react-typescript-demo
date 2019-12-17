@@ -23,7 +23,7 @@
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-hot-loader": "4.12.15",
-    "serializr": "^1.5.3",
+    "serializr": "^1.5.4",
     "tslib": "^1.10.0",
     "typed-rest-client": "^1.5.0"
   },
