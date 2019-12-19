@@ -5850,10 +5850,10 @@ type-check@~0.3.2:
   dependencies:
     prelude-ls "~1.1.2"
 
-typed-rest-client@^1.5.0:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/typed-rest-client/-/typed-rest-client-1.5.0.tgz#c0dda6e775b942fd46a2d99f2160a94953206fc2"
-  integrity sha512-DVZRlmsfnTjp6ZJaatcdyvvwYwbWvR4YDNFDqb+qdTxpvaVP99YCpBkA8rxsLtAPjBVoDe4fNsnMIdZTiPuKWg==
+typed-rest-client@^1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/typed-rest-client/-/typed-rest-client-1.7.0.tgz#8f09d316f69eba626ce80e609d86cc6bf907ddb3"
+  integrity sha512-hPqMaKzFu3rMZz7gDUljRC6/Sf/KQS2SCQh8lbLpQ0ItY0ydrhqAhwmLreSlD92bRCey25zvp+PFzScUn5W3/g==
   dependencies:
     tunnel "0.0.4"
     underscore "1.8.3"
