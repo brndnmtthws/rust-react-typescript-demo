@@ -4855,6 +4855,11 @@ q@^1.1.2:
   resolved "https://registry.yarnpkg.com/q/-/q-1.5.1.tgz#7e32f75b41381291d04611f1bf14109ac00651d7"
   integrity sha1-fjL3W0E4EpHQRhHxvxQQmsAGUdc=
 
+qs@^6.9.1:
+  version "6.9.1"
+  resolved "https://registry.yarnpkg.com/qs/-/qs-6.9.1.tgz#20082c65cb78223635ab1a9eaca8875a29bf8ec9"
+  integrity sha512-Cxm7/SS/y/Z3MHWSxXb8lIFqgqBowP5JMlTUFyJN88y0SGQhVmZnqFK/PeuMX9LzUyWsqqhNxIyg0jlzq946yA==
+
 qs@~6.5.2:
   version "6.5.2"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.2.tgz#cb3ae806e8740444584ef154ce8ee98d403f3e36"
@@ -5833,10 +5838,10 @@ tunnel-agent@^0.6.0:
   dependencies:
     safe-buffer "^5.0.1"
 
-tunnel@0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/tunnel/-/tunnel-0.0.4.tgz#2d3785a158c174c9a16dc2c046ec5fc5f1742213"
-  integrity sha1-LTeFoVjBdMmhbcLARuxfxfF0IhM=
+tunnel@0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/tunnel/-/tunnel-0.0.6.tgz#72f1314b34a5b192db012324df2cc587ca47f92c"
+  integrity sha512-1h/Lnq9yajKY2PEbBadPXj3VxsDDu844OnaAo52UVmIzIvwwtBPIuNvkjuzBlTWpfJyUbG3ez0KSBibQkj4ojg==
 
 tweetnacl@^0.14.3, tweetnacl@~0.14.0:
   version "0.14.5"
@@ -5850,12 +5855,13 @@ type-check@~0.3.2:
   dependencies:
     prelude-ls "~1.1.2"
 
-typed-rest-client@^1.5.0:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/typed-rest-client/-/typed-rest-client-1.5.0.tgz#c0dda6e775b942fd46a2d99f2160a94953206fc2"
-  integrity sha512-DVZRlmsfnTjp6ZJaatcdyvvwYwbWvR4YDNFDqb+qdTxpvaVP99YCpBkA8rxsLtAPjBVoDe4fNsnMIdZTiPuKWg==
+typed-rest-client@^1.7.2:
+  version "1.7.2"
+  resolved "https://registry.yarnpkg.com/typed-rest-client/-/typed-rest-client-1.7.2.tgz#5be96f5bbff703e3527ffd6e2661d2074056f7e7"
+  integrity sha512-6ENgPdTH7s2Xcd6mBaahyMLBoXPi0LNe75E1T0RFOdhqN9ENpZmf3P5iloOlJUDaHYrucPPzMrBybr6BdS2URg==
   dependencies:
-    tunnel "0.0.4"
+    qs "^6.9.1"
+    tunnel "0.0.6"
     underscore "1.8.3"
 
 typedarray@^0.0.6:
