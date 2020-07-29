@@ -10,7 +10,6 @@ extern crate diesel;
 extern crate serde_derive;
 use rocket::response::content;
 use rocket_contrib::json::{Json, JsonValue};
-use rocket_cors;
 use rocket_cors::{AllowedHeaders, AllowedOrigins, Error};
 
 mod models;
@@ -147,12 +146,13 @@ fn unprocessable_entity() -> JsonValue {
 }
 
 fn main() -> Result<(), Error> {
-    let cors = rocket_cors::Cors::from_options(&rocket_cors::CorsOptions{
+    let cors = rocket_cors::Cors::from_options(&rocket_cors::CorsOptions {
         allowed_origins: AllowedOrigins::all(),
         allowed_headers: AllowedHeaders::all(),
         allow_credentials: true,
         ..Default::default()
-    }).unwrap();
+    })
+    .unwrap();
 
     rocket::ignite()
         .attach(DbConn::fairing())

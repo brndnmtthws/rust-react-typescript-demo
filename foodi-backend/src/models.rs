@@ -12,9 +12,9 @@ mod date_format {
     use chrono::NaiveDateTime;
     use serde::{self, Deserialize, Deserializer};
 
-    const FORMAT1: &'static str = "%Y-%m-%dT%H:%M:%S";
-    const FORMAT2: &'static str = "%Y-%m-%dT%H:%M:%S%.3f";
-    const FORMAT3: &'static str = "%Y-%m-%dT%H:%M:%S%.3fZ";
+    const FORMAT1: &str = "%Y-%m-%dT%H:%M:%S";
+    const FORMAT2: &str = "%Y-%m-%dT%H:%M:%S%.3f";
+    const FORMAT3: &str = "%Y-%m-%dT%H:%M:%S%.3fZ";
 
     pub fn deserialize<'de, D>(deserializer: D) -> Result<NaiveDateTime, D::Error>
     where
