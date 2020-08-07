@@ -136,7 +136,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]
 name = "chrono"
-version = "0.4.13"
+version = "0.4.14"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 dependencies = [
  "num-integer 0.1.43 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -212,7 +212,7 @@ version = "1.4.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 dependencies = [
  "byteorder 1.3.4 (registry+https://github.com/rust-lang/crates.io-index)",
- "chrono 0.4.13 (registry+https://github.com/rust-lang/crates.io-index)",
+ "chrono 0.4.14 (registry+https://github.com/rust-lang/crates.io-index)",
  "diesel_derives 1.4.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "libsqlite3-sys 0.18.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "r2d2 0.8.9 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -256,7 +256,7 @@ dependencies = [
 name = "foodi-backend"
 version = "0.1.0"
 dependencies = [
- "chrono 0.4.13 (registry+https://github.com/rust-lang/crates.io-index)",
+ "chrono 0.4.14 (registry+https://github.com/rust-lang/crates.io-index)",
  "diesel 1.4.5 (registry+https://github.com/rust-lang/crates.io-index)",
  "rocket 0.4.5 (registry+https://github.com/rust-lang/crates.io-index)",
  "rocket_contrib 0.4.5 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -1233,7 +1233,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 "checksum byte-tools 0.3.1 (registry+https://github.com/rust-lang/crates.io-index)" = "e3b5ca7a04898ad4bcd41c90c5285445ff5b791899bb1b0abdd2a2aa791211d7"
 "checksum byteorder 1.3.4 (registry+https://github.com/rust-lang/crates.io-index)" = "08c48aae112d48ed9f069b33538ea9e3e90aa263cfa3d1c24309612b1f7472de"
 "checksum cfg-if 0.1.10 (registry+https://github.com/rust-lang/crates.io-index)" = "4785bdd1c96b2a846b2bd7cc02e86b6b3dbf14e7e53446c4f54c92a361040822"
-"checksum chrono 0.4.13 (registry+https://github.com/rust-lang/crates.io-index)" = "c74d84029116787153e02106bf53e66828452a4b325cc8652b788b5967c0a0b6"
+"checksum chrono 0.4.14 (registry+https://github.com/rust-lang/crates.io-index)" = "41194be16cf333d81c5c8cbc060d606f333f5fc9e2c44ad7315cb37fb6be2a87"
 "checksum cloudabi 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)" = "4344512281c643ae7638bbabc3af17a11307803ec8f0fcad9fae512a8bf36467"
 "checksum cookie 0.11.3 (registry+https://github.com/rust-lang/crates.io-index)" = "5795cda0897252e34380a27baf884c53aa7ad9990329cdad96d4c5d027015d44"
 "checksum crypto-mac 0.7.0 (registry+https://github.com/rust-lang/crates.io-index)" = "4434400df11d95d556bac068ddfedd482915eb18fe8bea89bc80b6e4b1c179e5"
