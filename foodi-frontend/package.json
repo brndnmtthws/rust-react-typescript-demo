@@ -22,7 +22,7 @@
     "mobx-react": "^6.2.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-hot-loader": "4.12.21",
+    "react-hot-loader": "4.13.0",
     "serializr": "^2.0.3",
     "tslib": "^2.0.1",
     "typed-rest-client": "^1.7.3"
