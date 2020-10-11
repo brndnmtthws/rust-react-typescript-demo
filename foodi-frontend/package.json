@@ -24,7 +24,7 @@
     "react-dom": "^16.13.1",
     "react-hot-loader": "4.13.0",
     "serializr": "^2.0.3",
-    "tslib": "^2.0.2",
+    "tslib": "^2.0.3",
     "typed-rest-client": "^1.7.3"
   },
   "scripts": {
