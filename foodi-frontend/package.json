@@ -20,7 +20,7 @@
     "global": "^4.4.0",
     "mobx": "^5.15.7",
     "mobx-react": "^6.3.1",
-    "react": "^16.13.1",
+    "react": "^16.14.0",
     "react-dom": "^16.13.1",
     "react-hot-loader": "4.13.0",
     "serializr": "^2.0.3",
