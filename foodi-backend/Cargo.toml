@@ -5,7 +5,7 @@ authors = ["Brenden Matthews <brenden@diddyinc.com>"]
 edition = "2018"
 
 [dependencies]
-rocket = "0.4.1"
+rocket = "0.4.6"
 diesel = { version = "1.4.3", features = ["sqlite", "chrono"] }
 chrono = { version = "0.4", features = ["serde"] }
 serde = "1.0"
