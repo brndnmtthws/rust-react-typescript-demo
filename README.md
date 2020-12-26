@@ -12,7 +12,7 @@ about how it was built (mostly trial and error, like a lot of things in life
 If you'd like to learn more, check out my other projects:
 
 - [📹 Subscribe to my YouTube channel](https://www.youtube.com/c/BrendenMatthews/live), or
-- [🎮 follow me on Twitch](https://www.twitch.tv/brndnmtthws)
+- [🎮 follow me on Twitch](https://www.twitch.tv/letsmakestuff)
 
 This repo has the following features:
 
