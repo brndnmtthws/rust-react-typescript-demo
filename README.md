@@ -1,4 +1,4 @@
-[![Node.js CI](https://github.com/brndnmtthws/rust-react-typescript-demo/workflows/Node.js%20CI/badge.svg?branch=master)](https://github.com/brndnmtthws/rust-react-typescript-demo/actions?query=workflow%3A%22Node.js+CI%22) [![Rust](https://github.com/brndnmtthws/rust-react-typescript-demo/workflows/Rust/badge.svg?branch=master)](https://github.com/brndnmtthws/rust-react-typescript-demo/actions?query=workflow%3ARust) [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=brndnmtthws/rust-react-typescript-demo)](https://dependabot.com)
+[![Node.js CI](https://github.com/brndnmtthws/rust-react-typescript-demo/workflows/Node.js%20CI/badge.svg?branch=master)](https://github.com/brndnmtthws/rust-react-typescript-demo/actions?query=workflow%3A%22Node.js+CI%22) [![Rust](https://github.com/brndnmtthws/rust-react-typescript-demo/workflows/Rust/badge.svg?branch=master)](https://github.com/brndnmtthws/rust-react-typescript-demo/actions?query=workflow%3ARust)
 
 # rust-react-typescript-demo
 
