@@ -26,7 +26,7 @@
     "serializr": "^2.0.3",
     "tslib": "^2.0.3",
     "typed-rest-client": "^1.8.0",
-    "is-svg": ">=4.2.2"
+    "is-svg": ">=4.3.1"
   },
   "scripts": {
     "dev": "parcel index.html",
