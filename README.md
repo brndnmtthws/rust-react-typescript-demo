@@ -16,7 +16,7 @@ If you'd like to learn more, check out my other projects:
 
 This repo has the following features:
 
-- [Rust](https://www.rust-lang.org/), [Rocket](https://rocket.rs/), & [Diesel](http://diesel.rs/) based backend
+- [Rust](https://www.rust-lang.org/), [Rocket](https://rocket.rs/), & [SQLx](https://github.com/launchbadge/sqlx) based backend
 - [React](https://reactjs.org/), [Mobx](https://mobx.js.org/), and [TypeScript](https://www.typescriptlang.org/) based frontend
 - [Parcel](https://parceljs.org/) for frontend packaging
 - [Docker](https://docs.docker.com/install/) image with frontend & backend all-in-one
@@ -59,12 +59,12 @@ $ cargo build
 ### Run the Database Migration Scripts
 
 To create the initial database schema, run the migration scripts using
-`diesel`:
+`sqlx`:
 
 ```ShellSession
-$ cargo install diesel_cli --no-default-features --features sqlite
+$ cargo install sqlx-cli
 ...
-$ diesel migration run --database-url database.sqlite
+$ sqlx migrate run
 ...
 ```
 

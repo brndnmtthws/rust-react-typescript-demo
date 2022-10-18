@@ -1,50 +1,23 @@
-use crate::schema::meals;
 use chrono::NaiveDateTime;
+use rocket::serde::{Deserialize, Serialize};
+use sqlx::{sqlite::SqliteRow, FromRow, Row};
 
-#[derive(Queryable, Serialize)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
+#[serde(crate = "rocket::serde")]
 pub struct Meal {
-    pub id: i32,
+    #[serde(skip_deserializing, skip_serializing_if = "Option::is_none")]
+    pub id: Option<i64>,
     pub name: String,
-    pub time: NaiveDateTime,
+    #[serde(skip_deserializing, skip_serializing_if = "Option::is_none")]
+    pub time: Option<NaiveDateTime>,
 }
 
-mod date_format {
-    use chrono::NaiveDateTime;
-    use serde::{self, Deserialize, Deserializer};
-
-    const FORMAT1: &str = "%Y-%m-%dT%H:%M:%S";
-    const FORMAT2: &str = "%Y-%m-%dT%H:%M:%S%.3f";
-    const FORMAT3: &str = "%Y-%m-%dT%H:%M:%S%.3fZ";
-
-    pub fn deserialize<'de, D>(deserializer: D) -> Result<NaiveDateTime, D::Error>
-    where
-        D: Deserializer<'de>,
-    {
-        let s = String::deserialize(deserializer)?;
-
-        let _: Result<NaiveDateTime, D::Error> =
-            match NaiveDateTime::parse_from_str(&s, FORMAT1).map_err(serde::de::Error::custom) {
-                Ok(dt) => return Ok(dt),
-                Err(err) => Err(err),
-            };
-
-        let _: Result<NaiveDateTime, D::Error> =
-            match NaiveDateTime::parse_from_str(&s, FORMAT2).map_err(serde::de::Error::custom) {
-                Ok(dt) => return Ok(dt),
-                Err(err) => Err(err),
-            };
-
-        match NaiveDateTime::parse_from_str(&s, FORMAT3).map_err(serde::de::Error::custom) {
-            Ok(dt) => Ok(dt),
-            Err(err) => Err(err),
-        }
+impl FromRow<'_, SqliteRow> for Meal {
+    fn from_row(row: &SqliteRow) -> sqlx::Result<Self> {
+        Ok(Self {
+            id: Some(row.try_get("id")?),
+            name: row.try_get("name")?,
+            time: row.try_get("time")?,
+        })
     }
-}
-
-#[derive(AsChangeset, Insertable, Deserialize)]
-#[table_name = "meals"]
-pub struct NewMeal {
-    pub name: String,
-    #[serde(with = "date_format")]
-    pub time: NaiveDateTime,
 }

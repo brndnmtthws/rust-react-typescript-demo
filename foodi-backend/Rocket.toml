@@ -1,2 +1,6 @@
+[default]
+# change to "debug" for debug logging
+log_level = "normal"
+
 [global.databases]
 sqlite = { url = "database.sqlite" }

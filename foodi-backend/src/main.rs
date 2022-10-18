@@ -1,165 +1,122 @@
-#![feature(proc_macro_hygiene, decl_macro)]
-
-#[macro_use]
-extern crate rocket;
-#[macro_use]
-extern crate rocket_contrib;
-#[macro_use]
-extern crate diesel;
-#[macro_use]
-extern crate serde_derive;
-use rocket::response::content;
-use rocket_contrib::json::{Json, JsonValue};
-use rocket_cors::{AllowedHeaders, AllowedOrigins, Error};
+use chrono::Utc;
+use rocket::fairing::AdHoc;
+use rocket::futures::TryFutureExt;
+use rocket::response::status::{Created, NoContent};
+use rocket::response::Debug;
+use rocket::serde::json::{json, Json, Value};
+use rocket::{
+    catch, catchers, delete, error, fairing, get, launch, post, put, routes, Build, Rocket,
+};
+use rocket_cors::CorsOptions;
+use rocket_db_pools::{Connection, Database};
 
 mod models;
-mod schema;
 
-use models::*;
+use models::Meal;
 
-#[derive(Debug, Responder)]
-#[response(status = 500, content_type = "json")]
-pub struct ResponseError {
-    response: content::Json<String>,
-}
+type Result<T, E = rocket::response::Debug<sqlx::Error>> = std::result::Result<T, E>;
 
-#[derive(Debug, Responder)]
-#[response(status = 404, content_type = "json")]
-pub struct ResponseNone {
-    response: content::Json<String>,
-}
-
+#[derive(Database)]
 #[database("sqlite")]
-struct DbConn(diesel::SqliteConnection);
+struct Db(sqlx::SqlitePool);
 
-#[get("/meals/<meal_id>")] // GET /v1/meals/<id>
-fn get(conn: DbConn, meal_id: i32) -> Result<content::Json<String>, ResponseNone> {
-    use diesel::prelude::*;
-    use schema::meals::dsl::*;
-    let query_result = meals.filter(id.eq(meal_id)).first::<Meal>(&*conn);
-
-    match query_result {
-        Ok(results) => Ok(content::Json(json!(results).to_string())),
-        Err(error) => Err(ResponseNone {
-            response: content::Json(json!({ "error": error.to_string() }).to_string()),
-        }),
-    }
+#[get("/<id>")] // GET /v1/meals/<id>
+async fn read(mut db: Connection<Db>, id: i64) -> Option<Json<Meal>> {
+    sqlx::query_as::<_, Meal>("SELECT * FROM meals WHERE id = ?")
+        .bind(id)
+        .fetch_one(&mut *db)
+        .map_ok(Json)
+        .await
+        .ok()
 }
 
-#[get("/meals")] // GET /v1/meals
-fn list(conn: DbConn) -> Result<content::Json<String>, ResponseError> {
-    use diesel::prelude::*;
-    use schema::meals::dsl::*;
-
-    let query_result = meals.load::<Meal>(&*conn);
-
-    match query_result {
-        Ok(results) => Ok(content::Json(json!(results).to_string())),
-        Err(error) => Err(ResponseError {
-            response: content::Json(json!({ "error": error.to_string() }).to_string()),
-        }),
-    }
+#[get("/")] // GET /v1/meals
+async fn list(mut db: Connection<Db>) -> Result<Json<Vec<Meal>>> {
+    sqlx::query_as::<_, Meal>("SELECT * FROM meals")
+        .fetch_all(&mut *db)
+        .map_ok(|recs| Ok(Json(recs)))
+        .map_err(Debug)
+        .await?
 }
 
-#[post("/meals", data = "<new_meal>")] // POST /v1/meals
-fn add(conn: DbConn, new_meal: Json<NewMeal>) -> Result<content::Json<String>, ResponseError> {
-    use diesel::prelude::*;
-    use diesel::result::Error;
-
-    let inserted_meal = conn.transaction::<Meal, Error, _>(|| {
-        diesel::insert_into(schema::meals::table)
-            .values(&new_meal.0)
-            .execute(&*conn)?;
-
-        use schema::meals::dsl::*;
-
-        meals.order(id.desc()).first(&*conn)
-    });
-
-    match inserted_meal {
-        Ok(meal) => Ok(content::Json(json!(meal).to_string())),
-        Err(error) => Err(ResponseError {
-            response: content::Json(json!({ "error": error.to_string() }).to_string()),
-        }),
-    }
+#[post("/", data = "<meal>")] // POST /v1/meals
+async fn create(mut db: Connection<Db>, meal: Json<Meal>) -> Result<Created<Json<Meal>>> {
+    sqlx::query_as::<_, Meal>(
+        "INSERT INTO meals (name, time) VALUES (?, ?) RETURNING id, name, time",
+    )
+    .bind(meal.name.clone())
+    .bind(meal.time.unwrap_or_else(|| Utc::now().naive_utc()))
+    .fetch_one(&mut *db)
+    .map_ok(|meal| Created::new(format!("/v1/meals/{}", meal.id.unwrap())).body(Json(meal)))
+    .map_err(Debug)
+    .await
 }
 
-#[put("/meals/<meal_id>", data = "<new_meal>")] // PUT /v1/meals/<id>
-fn update(
-    conn: DbConn,
-    meal_id: i32,
-    new_meal: Json<NewMeal>,
-) -> Result<content::Json<String>, ResponseError> {
-    use diesel::prelude::*;
-    use diesel::result::Error;
-
-    let inserted_meal = conn.transaction::<Meal, Error, _>(|| {
-        use crate::schema::meals::columns::id;
-        diesel::update(schema::meals::table.filter(id.eq(meal_id)))
-            .set(&new_meal.0)
-            .execute(&*conn)?;
-
-        schema::meals::table.filter(id.eq(meal_id)).first(&*conn)
-    });
-
-    match inserted_meal {
-        Ok(meal) => Ok(content::Json(json!(meal).to_string())),
-        Err(error) => Err(ResponseError {
-            response: content::Json(json!({ "error": error.to_string() }).to_string()),
-        }),
-    }
+#[put("/<id>", data = "<meal>")] // PUT /v1/meals/<id>
+async fn update(mut db: Connection<Db>, id: i64, meal: Json<Meal>) -> Result<Json<Meal>> {
+    sqlx::query_as::<_, Meal>(
+        "UPDATE meals SET name = ?, time = ? WHERE id = ? RETURNING id, name, time",
+    )
+    .bind(meal.name.clone())
+    .bind(meal.time.unwrap_or_else(|| Utc::now().naive_utc()))
+    .bind(id)
+    .fetch_one(&mut *db)
+    .map_ok(Json)
+    .map_err(Debug)
+    .await
 }
 
-#[delete("/meals/<meal_id>")] // DELETE /v1/meals
-fn delete(conn: DbConn, meal_id: i32) -> Result<content::Json<String>, ResponseError> {
-    use diesel::prelude::*;
-    use diesel::result::Error;
-
-    let result = conn.transaction::<_, Error, _>(|| {
-        use crate::schema::meals::columns::id;
-        diesel::delete(schema::meals::table.filter(id.eq(meal_id))).execute(&*conn)?;
-        Ok(())
-    });
-
-    match result {
-        Ok(_) => Ok(content::Json(json!({"result":"gone!"}).to_string())),
-        Err(error) => Err(ResponseError {
-            response: content::Json(json!({ "error": error.to_string() }).to_string()),
-        }),
-    }
+#[delete("/<id>")] // DELETE /v1/meals
+async fn delete(mut db: Connection<Db>, id: i64) -> Result<NoContent> {
+    sqlx::query("DELETE FROM meals WHERE id = ?")
+        .bind(id)
+        .fetch_one(&mut *db)
+        .await
+        .map(|_| NoContent)
+        .map_err(Debug)
 }
 
 #[catch(404)]
-fn not_found() -> JsonValue {
+fn not_found() -> Value {
     json!({
-        "status": "error",
-        "reason": "Resource was not found."
+        "error": {
+            "code": 404,
+            "description": "Resource was not found.",
+            "reason": "Not Found"
+        }
     })
 }
 
 #[catch(422)]
-fn unprocessable_entity() -> JsonValue {
+fn unprocessable_entity() -> Value {
     json!({
-        "status": "error",
-        "reason": "Unprocessable Entity. The request was well-formed but was unable to be followed due to semantic errors."
+        "error": {
+            "code": 422,
+            "description": "Unprocessable Entity. The request was well-formed but was unable to be followed due to semantic errors.",
+            "reason": "Unprocessable Entity"
+        }
     })
 }
 
-fn main() -> Result<(), Error> {
-    let cors = rocket_cors::Cors::from_options(&rocket_cors::CorsOptions {
-        allowed_origins: AllowedOrigins::all(),
-        allowed_headers: AllowedHeaders::all(),
-        allow_credentials: true,
-        ..Default::default()
-    })
-    .unwrap();
+async fn run_migrations(rocket: Rocket<Build>) -> fairing::Result {
+    match Db::fetch(&rocket) {
+        Some(db) => match sqlx::migrate!().run(&**db).await {
+            Ok(_) => Ok(rocket),
+            Err(e) => {
+                error!("Failed to initialize SQLx database: {}", e);
+                Err(rocket)
+            }
+        },
+        None => Err(rocket),
+    }
+}
 
-    rocket::ignite()
-        .attach(DbConn::fairing())
-        .attach(cors)
-        .register(catchers![not_found, unprocessable_entity])
-        .mount("/v1", routes![list, add, get, update, delete])
-        .launch();
-
-    Ok(())
+#[launch]
+fn rocket() -> _ {
+    rocket::build()
+        .attach(CorsOptions::default().to_cors().unwrap())
+        .attach(Db::init())
+        .attach(AdHoc::try_on_ignite("SQLx Migrations", run_migrations))
+        .register("/", catchers![not_found, unprocessable_entity])
+        .mount("/v1/meals", routes![create, read, update, delete, list])
 }

@@ -1,15 +1,10 @@
-import { hot } from "react-hot-loader";
-import * as React from "react";
-import { MealView } from "./meals/view";
-import { AppState } from "./meals/state";
+import * as React from 'react'
+import MealView from './meals/view'
 
-type State = AppState;
-
-class App extends React.Component<object, State> {
-  state: State = new AppState();
+class App extends React.Component<{}> {
   render() {
-    return <MealView appState={this.state} />;
+    return <MealView />
   }
 }
 
-export default hot(module)(App);
+export default App
