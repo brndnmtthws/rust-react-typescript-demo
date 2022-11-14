@@ -20,7 +20,7 @@
     "eslint-plugin-n": "^15.5.0",
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-react": "^7.31.10",
-    "parcel": "^2.7.0",
+    "parcel": "^2.8.0",
     "prettier": "2.7.1",
     "process": "^0.11.10",
     "react-refresh": "^0.14.0",
