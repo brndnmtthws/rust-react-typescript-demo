@@ -19,6 +19,7 @@ jobs:
     strategy:
       matrix:
         toolchain: [nightly]
+        components: clippy, rustfmt
     steps:
       - uses: actions/checkout@v3
       - uses: brndnmtthws/rust-action-rustup@v1
