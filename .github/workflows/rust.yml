@@ -26,11 +26,9 @@ jobs:
           toolchain: ${{ matrix.toolchain }}
           profile: minimal
       - name: Build
-        run: cargo build --verbose
+        run: cargo build
       - name: Run tests
         run: cargo test --verbose
-      - name: Run clippy
-        run: cargo clippy --all-targets --all-features -- -D warnings
       - name: Run clippy
         run: cargo clippy --all-targets --all-features -- -D warnings
       - name: Check formatting
