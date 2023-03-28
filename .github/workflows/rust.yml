@@ -21,12 +21,10 @@ jobs:
         toolchain: [nightly]
     steps:
       - uses: actions/checkout@v3
-      - uses: actions-rs/toolchain@v1
+      - uses: brndnmtthws/rust-action-rustup@v1
         with:
           toolchain: ${{ matrix.toolchain }}
-          components: rustfmt, clippy
-          override: true
-      - uses: Swatinem/rust-cache@v2
+          profile: minimal
       - name: Build
         run: cargo build --verbose
       - name: Run tests
