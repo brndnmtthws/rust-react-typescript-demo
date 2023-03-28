@@ -19,12 +19,12 @@ jobs:
     strategy:
       matrix:
         toolchain: [nightly]
-        components: clippy, rustfmt
     steps:
       - uses: actions/checkout@v3
       - uses: brndnmtthws/rust-action-rustup@v1
         with:
           toolchain: ${{ matrix.toolchain }}
+          components: clippy, rustfmt
           profile: minimal
       - name: Build
         run: cargo build
