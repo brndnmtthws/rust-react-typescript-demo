@@ -21,11 +21,9 @@ jobs:
         toolchain: [nightly]
     steps:
       - uses: actions/checkout@v3
-      - uses: brndnmtthws/rust-action-rustup@v1
+      - uses: brndnmtthws/rust-action@v1
         with:
           toolchain: ${{ matrix.toolchain }}
-          components: clippy, rustfmt
-          profile: minimal
       - name: Build
         run: cargo build
       - name: Run tests
