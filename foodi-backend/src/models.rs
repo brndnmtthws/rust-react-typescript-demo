@@ -1,6 +1,6 @@
 use chrono::NaiveDateTime;
 use rocket::serde::{Deserialize, Serialize};
-use sqlx::{sqlite::SqliteRow, FromRow, Row};
+use rocket_db_pools::sqlx::{self, sqlite, FromRow, Row};
 
 #[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(crate = "rocket::serde")]
@@ -12,8 +12,8 @@ pub struct Meal {
     pub time: Option<NaiveDateTime>,
 }
 
-impl FromRow<'_, SqliteRow> for Meal {
-    fn from_row(row: &SqliteRow) -> sqlx::Result<Self> {
+impl FromRow<'_, sqlite::SqliteRow> for Meal {
+    fn from_row(row: &sqlite::SqliteRow) -> sqlx::Result<Self> {
         Ok(Self {
             id: Some(row.try_get("id")?),
             name: row.try_get("name")?,

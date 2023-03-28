@@ -8,6 +8,7 @@ use rocket::{
     catch, catchers, delete, error, fairing, get, launch, post, put, routes, Build, Rocket,
 };
 use rocket_cors::CorsOptions;
+use rocket_db_pools::sqlx::{self};
 use rocket_db_pools::{Connection, Database};
 
 mod models;
