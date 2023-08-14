@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { API } from '../api'
 import Form from './form'
-import { Meal } from './meal'
+import { type Meal } from './meal'
 
 interface TableRowProps {
   children?: React.ReactNode
@@ -38,8 +38,12 @@ export default function MealView(): JSX.Element {
         if (resp.ok) {
           resp
             .json()
-            .then((json) => setMeals(json))
-            .catch((e) => console.error(e))
+            .then((json) => {
+              setMeals(json)
+            })
+            .catch((e) => {
+              console.error(e)
+            })
         }
       })
       .catch((e) => {
@@ -72,7 +76,9 @@ export default function MealView(): JSX.Element {
           <a
             className="f6 grow no-underline br-pill ba bw1 ph3 pv2 ma3 dib hot-pink"
             href="#0"
-            onClick={() => setShowForm(true)}
+            onClick={() => {
+              setShowForm(true)
+            }}
           >
             Add new meal
           </a>

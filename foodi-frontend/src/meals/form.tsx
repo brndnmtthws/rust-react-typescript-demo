@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { API } from '../api'
-import { Meal } from './meal'
+import { type Meal } from './meal'
 
 interface FormProps {
   onSubmit: (meal: Meal) => void
@@ -22,8 +22,12 @@ export default function Form({ onSubmit }: FormProps): JSX.Element {
       .then((resp) => {
         resp
           .json()
-          .then((meal) => onSubmit(meal))
-          .catch((e) => console.error(e))
+          .then((meal) => {
+            onSubmit(meal)
+          })
+          .catch((e) => {
+            console.error(e)
+          })
       })
       .catch((e) => {
         setError(e.toString())
@@ -43,7 +47,9 @@ export default function Form({ onSubmit }: FormProps): JSX.Element {
             className="input-reset ba b--black-20 pa2 mb2 db w-100"
             type="text"
             aria-describedby="name-desc"
-            onChange={(event) => setName(event.target.value)}
+            onChange={(event) => {
+              setName(event.target.value)
+            }}
             value={name}
           />
           <small id="name-desc" className="f6 black-60 db mb2">
@@ -60,9 +66,9 @@ export default function Form({ onSubmit }: FormProps): JSX.Element {
             type="text"
             aria-describedby="name-desc"
             value={time.toISOString()}
-            onChange={(event) =>
+            onChange={(event) => {
               setTime(new Date(Date.parse(event.target.value)))
-            }
+            }}
           />
           <small id="name-desc" className="f6 black-60 db mb2">
             When did you eat?
@@ -72,7 +78,9 @@ export default function Form({ onSubmit }: FormProps): JSX.Element {
           <a
             className="f6 grow no-underline br-pill ba bw1 ph3 pv2 mb2 dib white bg-hot-pink"
             href="#0"
-            onClick={(event) => submit()}
+            onClick={(event) => {
+              submit()
+            }}
           >
             + Save!
           </a>
