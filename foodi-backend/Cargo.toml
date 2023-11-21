@@ -5,10 +5,10 @@ authors = ["Brenden Matthews <brenden@brndn.io>"]
 edition = "2021"
 
 [dependencies]
-rocket_cors = { git = "https://github.com/lawliet89/rocket_cors.git", default-features = false }
-rocket = { version = "0.5.0-rc.2", features = ["json"] }
+rocket_cors = "0.6"
+rocket = { version = "0.5", features = ["json"] }
 chrono = { version = "0.4", features = ["serde"] }
-sqlx = { version = "0.6", default-features = false, features = [
+sqlx = { version = "0.7", default-features = false, features = [
     "runtime-tokio-rustls",
     "migrate",
     "macros",
@@ -16,5 +16,5 @@ sqlx = { version = "0.6", default-features = false, features = [
 ] }
 
 [dependencies.rocket_db_pools]
-version = "0.1.0-rc.3"
+version = "0.1"
 features = ["sqlx_sqlite"]

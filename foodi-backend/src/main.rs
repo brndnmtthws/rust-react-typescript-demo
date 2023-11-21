@@ -25,7 +25,7 @@ struct Db(sqlx::SqlitePool);
 async fn read(mut db: Connection<Db>, id: i64) -> Option<Json<Meal>> {
     sqlx::query_as::<_, Meal>("SELECT * FROM meals WHERE id = ?")
         .bind(id)
-        .fetch_one(&mut *db)
+        .fetch_one(db.as_mut())
         .map_ok(Json)
         .await
         .ok()
@@ -34,7 +34,7 @@ async fn read(mut db: Connection<Db>, id: i64) -> Option<Json<Meal>> {
 #[get("/")] // GET /v1/meals
 async fn list(mut db: Connection<Db>) -> Result<Json<Vec<Meal>>> {
     sqlx::query_as::<_, Meal>("SELECT * FROM meals")
-        .fetch_all(&mut *db)
+        .fetch_all(db.as_mut())
         .map_ok(|recs| Ok(Json(recs)))
         .map_err(Debug)
         .await?
@@ -47,7 +47,7 @@ async fn create(mut db: Connection<Db>, meal: Json<Meal>) -> Result<Created<Json
     )
     .bind(meal.name.clone())
     .bind(meal.time.unwrap_or_else(|| Utc::now().naive_utc()))
-    .fetch_one(&mut *db)
+    .fetch_one(db.as_mut())
     .map_ok(|meal| Created::new(format!("/v1/meals/{}", meal.id.unwrap())).body(Json(meal)))
     .map_err(Debug)
     .await
@@ -61,7 +61,7 @@ async fn update(mut db: Connection<Db>, id: i64, meal: Json<Meal>) -> Result<Jso
     .bind(meal.name.clone())
     .bind(meal.time.unwrap_or_else(|| Utc::now().naive_utc()))
     .bind(id)
-    .fetch_one(&mut *db)
+    .fetch_one(db.as_mut())
     .map_ok(Json)
     .map_err(Debug)
     .await
@@ -71,7 +71,7 @@ async fn update(mut db: Connection<Db>, id: i64, meal: Json<Meal>) -> Result<Jso
 async fn delete(mut db: Connection<Db>, id: i64) -> Result<NoContent> {
     sqlx::query("DELETE FROM meals WHERE id = ?")
         .bind(id)
-        .fetch_one(&mut *db)
+        .fetch_one(db.as_mut())
         .await
         .map(|_| NoContent)
         .map_err(Debug)
