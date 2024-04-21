@@ -1,20 +1,20 @@
 [package]
-name = "foodi-backend"
-version = "0.2.0"
 authors = ["Brenden Matthews <brenden@brndn.io>"]
 edition = "2021"
+name    = "foodi-backend"
+version = "0.2.0"
 
 [dependencies]
-rocket_cors = "0.6"
-rocket = { version = "0.5", features = ["json"] }
 chrono = { version = "0.4", features = ["serde"] }
+rocket = { version = "0.5", features = ["json"] }
+rocket_cors = "0.6"
 sqlx = { version = "0.7", default-features = false, features = [
-    "runtime-tokio-rustls",
-    "migrate",
-    "macros",
-    "chrono",
+  "runtime-tokio-rustls",
+  "migrate",
+  "macros",
+  "chrono",
 ] }
 
-[dependencies.rocket_db_pools]
-version = "0.1"
-features = ["sqlx_sqlite"]
+  [dependencies.rocket_db_pools]
+  features = ["sqlx_sqlite"]
+  version  = "0.1"
