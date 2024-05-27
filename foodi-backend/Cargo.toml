@@ -17,4 +17,4 @@ sqlx = { version = "0.7", default-features = false, features = [
 
   [dependencies.rocket_db_pools]
   features = ["sqlx_sqlite"]
-  version  = "0.1"
+  version  = "0.2"
